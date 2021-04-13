@@ -1,7 +1,10 @@
-echo "# jenkinsft" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/zirconiacoder/jenkinsft.git
-git push -u origin main
+pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
